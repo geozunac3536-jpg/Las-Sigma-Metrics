@@ -4,39 +4,66 @@
   <meta charset="UTF-8">
   <title>Las Sigma Metrics</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
+    /* Tema oscuro */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
       margin: 2rem;
-      background-color: #f9f9f9;
-      color: #333;
+      background-color: #121212;
+      color: #e0e0e0;
     }
     header {
       text-align: center;
       margin-bottom: 2rem;
     }
-    h1 {
-      color: #004080;
+    h1, h2 {
+      color: #00bcd4;
     }
     table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 2rem;
+      background-color: #1e1e1e;
     }
     th, td {
-      border: 1px solid #ccc;
+      border: 1px solid #333;
       padding: 0.75rem;
       text-align: center;
     }
     th {
-      background-color: #004080;
-      color: white;
+      background-color: #00bcd4;
+      color: #121212;
     }
     footer {
       text-align: center;
       margin-top: 2rem;
       font-size: 0.9rem;
-      color: #666;
+      color: #888;
+    }
+    canvas {
+      max-width: 600px;
+      margin: 0 auto;
+      display: block;
+    }
+    /* Botones filosos estilo Granular */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      margin: 0.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: #00bcd4;
+      color: #121212;
+      border: none;
+      clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 5% 100%, 0 80%);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #0097a7;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -44,48 +71,106 @@
   <header>
     <h1>Las Sigma Metrics</h1>
     <p>Portal de documentación y resultados reproducibles</p>
+    <button class="btn" onclick="location.href='https://github.com/geozunac3536-jpg/Las-Sigma-Metrics'">Repositorio</button>
+    <button class="btn" onclick="location.href='metrics.json'">Descargar métricas</button>
   </header>
 
   <section>
     <h2>Tabla comparativa de métricas</h2>
-    <table>
+    <table id="metricsTable">
       <tr>
         <th>Métrica</th>
         <th>Predicción</th>
         <th>Observación</th>
         <th>Diferencia</th>
       </tr>
-      <tr>
-        <td>Sigma 1</td>
-        <td>0.85</td>
-        <td>0.83</td>
-        <td>-0.02</td>
-      </tr>
-      <tr>
-        <td>Sigma 2</td>
-        <td>0.72</td>
-        <td>0.75</td>
-        <td>+0.03</td>
-      </tr>
-      <tr>
-        <td>Sigma 3</td>
-        <td>0.91</td>
-        <td>0.90</td>
-        <td>-0.01</td>
-      </tr>
+      <!-- Filas dinámicas -->
     </table>
   </section>
 
   <section>
-    <h2>Documentación</h2>
-    <p>
-      Consulta el <a href="https://github.com/geozunac3536-jpg/Las-Sigma-Metrics" target="_blank">
-      repositorio en GitHub</a> para README, addenda y trazabilidad completa.
-    </p>
+    <h2>Visualización interactiva</h2>
+    <canvas id="sigmaChart"></canvas>
   </section>
 
   <footer>
     <p>© 2025 Las Sigma Metrics — Publicación en GitHub Pages</p>
   </footer>
+
+  <script>
+    // Cargar métricas desde metrics.json
+    fetch('metrics.json')
+      .then(response => response.json())
+      .then(data => {
+        const table = document.getElementById('metricsTable');
+        const labels = [];
+        const predicciones = [];
+        const observaciones = [];
+
+        data.forEach(item => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${item.nombre}</td>
+            <td>${item.prediccion}</td>
+            <td>${item.observacion}</td>
+            <td>${(item.observacion - item.prediccion).toFixed(2)}</td>
+          `;
+          table.appendChild(row);
+
+          labels.push(item.nombre);
+          predicciones.push(item.prediccion);
+          observaciones.push(item.observacion);
+        });
+
+        // Crear gráfico dinámico
+        const ctx = document.getElementById('sigmaChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: 'Predicción',
+                data: predicciones,
+                backgroundColor: 'rgba(0, 188, 212, 0.7)'
+              },
+              {
+                label: 'Observación',
+                data: observaciones,
+                backgroundColor: 'rgba(255, 64, 129, 0.7)'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: 'Comparación de métricas Sigma',
+                color: '#e0e0e0'
+              },
+              legend: {
+                labels: {
+                  color: '#e0e0e0'
+                }
+              }
+            },
+            scales: {
+              x: {
+                ticks: { color: '#e0e0e0' }
+              },
+              y: {
+                beginAtZero: true,
+                max: 1,
+                ticks: { color: '#e0e0e0' }
+              }
+            }
+          }
+        });
+      })
+      .catch(error => {
+        console.error('Error cargando métricas:', error);
+      });
+  </script>
 </body>
 </html>
