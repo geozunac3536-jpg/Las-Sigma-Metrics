@@ -1,1 +1,53 @@
-<!doctype html><html><head><meta charset='utf-8'><title>Sigma-Metrics</title></head><body><h3>Dashboard</h3></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo Σ-Metrics</title>
+  <!-- Cargar Plotly desde CDN -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    h1 { color: #2c3e50; }
+    #grafico { width: 100%; max-width: 800px; height: 500px; }
+  </style>
+</head>
+<body>
+  <h1>Demo Interactivo — Σ-Metrics</h1>
+  <p>Este gráfico simula una serie temporal con coherencia causal (Q-driven) frente a ruido entrópico (φ-driven).</p>
+
+  <div id="grafico"></div>
+
+  <script>
+    // Datos simulados
+    const tiempo = Array.from({length: 50}, (_, i) => i);
+    const causal = tiempo.map(t => Math.sin(t/5) + (Math.random()*0.2)); // señal coherente
+    const ruido = tiempo.map(t => Math.random()*2 - 1); // ruido entrópico
+
+    // Configuración del gráfico
+    const trace1 = {
+      x: tiempo,
+      y: causal,
+      mode: 'lines+markers',
+      name: 'Q-driven (coherencia causal)',
+      line: {color: 'blue'}
+    };
+
+    const trace2 = {
+      x: tiempo,
+      y: ruido,
+      mode: 'lines+markers',
+      name: 'φ-driven (ruido entrópico)',
+      line: {color: 'red'}
+    };
+
+    const layout = {
+      title: 'Comparación de señales Σ-Metrics',
+      xaxis: {title: 'Tiempo'},
+      yaxis: {title: 'Valor'},
+      legend: {orientation: 'h'}
+    };
+
+    Plotly.newPlot('grafico', [trace1, trace2], layout);
+  </script>
+</body>
+</html>
