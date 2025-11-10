@@ -1,2 +1,2 @@
-# Las-Sigma-Metrics
-Software Metrológico Sigma TCDS
+# Sigma-Metrics package
+See docs and examples.
