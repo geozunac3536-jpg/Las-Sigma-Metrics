@@ -12,8 +12,8 @@ based on the TCDS canon and developed by **Genaro Carrasco Ozuna**.
 
 - **Nombre / Name:** Genaro Carrasco Ozuna  
 - **Rol / Role:** Arquitecto de documentación científica modular (TCDS Project)  
-- **Intereses / Interests:** Filosofía de la ciencia, causalidad, reproducibilidad, open science, metrología aplicada  
 - **Ubicación / Location:** México (Ecatepec de Morelos, Puebla, Orizaba)  
+- **Intereses / Interests:** Filosofía de la ciencia, causalidad, reproducibilidad, open science, metrología aplicada  
 
 ---
 
