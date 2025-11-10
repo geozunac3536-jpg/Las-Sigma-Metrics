@@ -15,7 +15,40 @@
   </p>
 </div>
 
+---# 🌑 Sigma-Metrics Package
+
+Herramientas para evaluar coherencia causal (Q-driven) frente a ruido entrópico (φ-driven),  
+basadas en el canon TCDS y desarrolladas por **Genaro Carrasco Ozuna**.
+
+Tools to evaluate causal coherence (Q-driven) versus entropic noise (φ-driven),  
+based on the TCDS canon and developed by **Genaro Carrasco Ozuna**.
+
 ---
+
+## 🏷️ Badges
+
+![License](https://img.shields.io/badge/License-MIT%20%2F%20Dual--Proprietary-blueviolet?style=for-the-badge&logo=balance-scale)  
+![Status](https://img.shields.io/badge/Status-Active-darkgreen?style=for-the-badge&logo=github)  
+![Build](https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge&logo=githubactions)  
+![Pages](https://img.shields.io/badge/Demo-GitHub%20Pages-121212?style=for-the-badge&logo=github)
+
+---
+
+## 👤 Autor / Author
+- **Nombre / Name:** Genaro Carrasco Ozuna  
+- **Rol / Role:** Arquitecto de documentación científica modular (TCDS Project)  
+- **Ubicación / Location:** México (Ecatepec de Morelos, Puebla, Orizaba)  
+- **Intereses / Interests:** Filosofía de la ciencia, causalidad, reproducibilidad, open science, metrología aplicada  
+
+---
+
+## 📦 Instalación / Installation
+
+```bash
+git clone https://github.com/geozunac3536-jpg/Las-Sigma-Metrics.git
+cd Las-Sigma-Metrics<p align="center">
+  <img src="https://copilot.microsoft.com/th/id/BCO.7bcb8109-52a6-4b5c-9604-c02d595e1d5b.png" alt="Sigma-Metrics Banner" width="100%" />
+</p>
 
 ## Tabla de contenidos
 - [1. Propósito](#1-propósito)
