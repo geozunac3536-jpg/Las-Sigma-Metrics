@@ -2,26 +2,37 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Demo Σ-Metrics</title>
-  <!-- Cargar Plotly desde CDN -->
+  <title>Demo Avanzado Σ-Metrics</title>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <style>
     body { font-family: Arial, sans-serif; margin: 40px; }
     h1 { color: #2c3e50; }
     #grafico { width: 100%; max-width: 800px; height: 500px; }
+    #metricas { margin-top: 20px; font-size: 18px; }
+    .valor { font-weight: bold; color: #27ae60; }
   </style>
 </head>
 <body>
-  <h1>Demo Interactivo — Σ-Metrics</h1>
-  <p>Este gráfico simula una serie temporal con coherencia causal (Q-driven) frente a ruido entrópico (φ-driven).</p>
+  <h1>Demo Interactivo — Σ-Metrics Avanzado</h1>
+  <p>Comparación entre señal causal (Q-driven) y ruido entrópico (φ-driven), con cálculo de métrica Σ.</p>
 
   <div id="grafico"></div>
+  <div id="metricas"></div>
 
   <script>
     // Datos simulados
     const tiempo = Array.from({length: 50}, (_, i) => i);
     const causal = tiempo.map(t => Math.sin(t/5) + (Math.random()*0.2)); // señal coherente
     const ruido = tiempo.map(t => Math.random()*2 - 1); // ruido entrópico
+
+    // Función para calcular RMSE
+    function calcularRMSE(arr1, arr2) {
+      const n = arr1.length;
+      const sum = arr1.reduce((acc, val, i) => acc + Math.pow(val - arr2[i], 2), 0);
+      return Math.sqrt(sum / n);
+    }
+
+    const rmse = calcularRMSE(causal, ruido);
 
     // Configuración del gráfico
     const trace1 = {
@@ -48,6 +59,11 @@
     };
 
     Plotly.newPlot('grafico', [trace1, trace2], layout);
+
+    // Mostrar métricas Σ
+    document.getElementById("metricas").innerHTML = `
+      <p>Indicador Σ calculado: RMSE = <span class="valor">${rmse.toFixed(3)}</span></p>
+    `;
   </script>
 </body>
 </html>
