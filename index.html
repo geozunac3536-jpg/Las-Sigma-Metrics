@@ -1,21 +1,91 @@
-# Las Sigma Metrics — Software Metrológico Σ (TCDS)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Las Sigma Metrics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      color: #004080;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.75rem;
+      text-align: center;
+    }
+    th {
+      background-color: #004080;
+      color: white;
+    }
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Las Sigma Metrics</h1>
+    <p>Portal de documentación y resultados reproducibles</p>
+  </header>
 
-Herramientas para evaluar coherencia causal con **Σ-metrics**: **LI**, **R**, **RMSE_SL** y **κΣ**.  
-Reproducible en **Android/Termux** y en **PC** con Python+NumPy.
+  <section>
+    <h2>Tabla comparativa de métricas</h2>
+    <table>
+      <tr>
+        <th>Métrica</th>
+        <th>Predicción</th>
+        <th>Observación</th>
+        <th>Diferencia</th>
+      </tr>
+      <tr>
+        <td>Sigma 1</td>
+        <td>0.85</td>
+        <td>0.83</td>
+        <td>-0.02</td>
+      </tr>
+      <tr>
+        <td>Sigma 2</td>
+        <td>0.72</td>
+        <td>0.75</td>
+        <td>+0.03</td>
+      </tr>
+      <tr>
+        <td>Sigma 3</td>
+        <td>0.91</td>
+        <td>0.90</td>
+        <td>-0.01</td>
+      </tr>
+    </table>
+  </section>
 
-> Repositorio: https://github.com/geozunac3536-jpg/Las-Sigma-Metrics  
-> Paquete ZIP recomendado: `SigmaPredictor_TCDS_v1.1.0.zip`  
-> DOI (Zenodo): *(pendiente de publicación)*
+  <section>
+    <h2>Documentación</h2>
+    <p>
+      Consulta el <a href="https://github.com/geozunac3536-jpg/Las-Sigma-Metrics" target="_blank">
+      repositorio en GitHub</a> para README, addenda y trazabilidad completa.
+    </p>
+  </section>
 
----
-
-## Quick Start — Termux (Android)
-```bash
-pkg update -y && pkg upgrade -y
-pkg install -y python python-numpy
-termux-setup-storage
-# Copia el ZIP a tu $HOME y descomprímelo
-cp ~/storage/downloads/SigmaPredictor_TCDS_v1.1.0.zip ~
-unzip ~/SigmaPredictor_TCDS_v1.1.0.zip -d ~
-cd ~/SigmaPredictor_TCDS
-bash run_example.sh
+  <footer>
+    <p>© 2025 Las Sigma Metrics — Publicación en GitHub Pages</p>
+  </footer>
+</body>
+</html>
