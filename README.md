@@ -13,19 +13,6 @@
     <a href="SigmaPredictor_TCDS_v1.1.0.zip"><img alt="Descargar ZIP" src="https://img.shields.io/badge/Descargar-ZIP%20v1.1.0-111111.svg?logo=download"></a>
     <a href="https://doi.org/10.5281/zenodo.XXXXXXX"><img alt="DOI Zenodo" src="https://img.shields.io/badge/DOI-Zenodo-1182c3.svg?logo=zenodo"></a>
   </p>
-</div>
-
----# 🌑 Sigma-Metrics Package
-
-Herramientas para evaluar coherencia causal (Q-driven) frente a ruido entrópico (φ-driven),  
-basadas en el canon TCDS y desarrolladas por **Genaro Carrasco Ozuna**.
-
-Tools to evaluate causal coherence (Q-driven) versus entropic noise (φ-driven),  
-based on the TCDS canon and developed by **Genaro Carrasco Ozuna**.
-
----
-
-## 🏷️ Badges
 
 ![License](https://img.shields.io/badge/License-MIT%20%2F%20Dual--Proprietary-blueviolet?style=for-the-badge&logo=balance-scale)  
 ![Status](https://img.shields.io/badge/Status-Active-darkgreen?style=for-the-badge&logo=github)  
