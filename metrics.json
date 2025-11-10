@@ -1,0 +1,5 @@
+[
+  { "nombre": "Sigma 1", "prediccion": 0.85, "observacion": 0.83 },
+  { "nombre": "Sigma 2", "prediccion": 0.72, "observacion": 0.75 },
+  { "nombre": "Sigma 3", "prediccion": 0.91, "observacion": 0.90 }
+]
