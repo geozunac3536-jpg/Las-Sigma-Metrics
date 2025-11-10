@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Las Sigma Metrics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg: #0d0f14; --panel: #121622; --text: #e6edf3; --muted: #9fb1c7;
+      --cyan: #00bcd4; --magenta: #ff4081; --accent: #1182c3; --border: #1b1f2a;
+    }
+    body { margin: 0; font-family: system-ui, Segoe UI, Arial; background: var(--bg); color: var(--text); }
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 28px 16px; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+    h1 { margin: 0 0 8px; font-size: 32px; color: var(--text); }
+    p.sub { margin: 0 0 16px; color: var(--muted); }
+    .btn {
+      display: inline-block; padding: 10px 16px; margin: 6px 6px 0 0; font-weight: 700; text-transform: uppercase;
+      color: #0d0f14; background: var(--cyan); border: none; cursor: pointer;
+      clip-path: polygon(0 0, 96% 0, 100% 20%, 100% 100%, 6% 100%, 0 80%);
+      transition: transform .15s ease, filter .2s ease;
+    }
+    .btn.alt { background: var(--magenta); }
+    .btn.dark { background: #111; color: var(--text); }
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { border: 1px solid var(--border); padding: 10px; text-align: center; }
+    th { background: var(--accent); color: #0d0f14; }
+    .section { margin-top: 24px; }
+    canvas { max-width: 720px; margin: 16px auto; display: block; }
+    footer { margin: 24px 0; text-align: center; color: var(--muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" style="text-align:center">
+      <h1>Las Sigma Metrics — Software Metrológico Σ (TCDS)</h1>
+      <p class="sub">Pipeline mínimo, auditable y reproducible para LI, R, RMSE_SL y κΣ en series temporales. Probado en Android/Termux y PC con Python+NumPy.</p>
+      <div>
+        <a class="btn" href="https://github.com/geozunac3536-jpg/Las-Sigma-Metrics" target="_blank">Repositorio</a>
+        <a class="btn alt" href="metrics.json" target="_blank">Descargar métricas</a>
+        <a class="btn dark" href="LICENSES/LICENSE-MIT.txt" target="_blank">Licencia</a>
+      </div>
+    </div>
+
+    <div class="section card">
+      <h2 style="margin-top:0">Tabla comparativa de métricas</h2>
+      <table id="metricsTable">
+        <tr>
+          <th>Métrica</th>
+          <th>Predicción</th>
+          <th>Observación</th>
+          <th>Diferencia</th>
+        </tr>
+        <!-- filas dinámicas -->
+      </table>
+    </div>
+
+    <div class="section card">
+      <h2 style="margin-top:0">Visualización interactiva</h2>
+      <canvas id="sigmaChart"></canvas>
+    </div>
+
+    <footer>© 2025 Las Sigma Metrics — Publicación en GitHub Pages</footer>
+  </div>
+
+  <script>
+    async function loadMetrics() {
+      try {
+        const res = await fetch('metrics.json', { cache: 'no-store' });
+        const data = await res.json();
+        const table = document.getElementById('metricsTable');
+        const labels = [], pred = [], obs = [];
+
+        data.forEach(item => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${item.nombre}</td>
+            <td>${item.prediccion}</td>
+            <td>${item.observacion}</td>
+            <td>${(item.observacion - item.prediccion).toFixed(2)}</td>
+          `;
+          table.appendChild(tr);
+          labels.push(item.nombre); pred.push(item.prediccion); obs.push(item.observacion);
+        });
+
+        const ctx = document.getElementById('sigmaChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels,
+            datasets: [
+              { label: 'Predicción', data: pred, backgroundColor: 'rgba(0,188,212,0.7)' },
+              { label: 'Observación', data: obs, backgroundColor: 'rgba(255,64,129,0.7)' }
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              title: { display: true, text: 'Comparación de métricas Σ', color: '#e6edf3' },
+              legend: { labels: { color: '#e6edf3' } }
+            },
+            scales: {
+              x: { ticks: { color: '#e6edf3' }, grid: { color: '#1b1f2a' } },
+              y: { beginAtZero: true, max: 1, ticks: { color: '#e6edf3' }, grid: { color: '#1b1f2a' } }
+            }
+          }
+        });
+      } catch (e) {
+        console.error('No se pudieron cargar métricas:', e);
+      }
+    }
+    loadMetrics();
+  </script>
+</body>
+</html>
