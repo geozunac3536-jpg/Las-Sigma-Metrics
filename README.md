@@ -1,4 +1,4 @@
-Sigma-Metrics Package
+##Sigma-Metrics Package
 
 Herramientas para evaluar coherencia causal (Q-driven) frente a ruido entrópico (φ-driven), 
 basadas en el canon TCDS y desarrolladas por Genaro Carrasco Ozuna.
