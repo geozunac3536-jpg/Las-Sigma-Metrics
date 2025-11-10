@@ -1,15 +1,4 @@
-<div align="center" style="background:#0d0f14;padding:28px 16px;border-radius:16px;border:1px solid #1b1f2a">
-  <h1 style="color:#e6edf3;margin:0;font-size:34px;line-height:1.2">Las Sigma Metrics — Software Metrológico Σ (TCDS)</h1>
-  <p style="color:#9fb1c7;margin:8px 0 0">Pipeline mínimo, auditable y reproducible para LI, R, RMSE_SL y κΣ en series temporales.<br>Probado en Android/Termux y PC con Python+NumPy.</p>
-  <p>
-    <a href="LICENSES/LICENSE-MIT.txt"><img alt="MIT" src="https://img.shields.io/badge/License-MIT-0b84fe.svg"></a>
-    <a href="LICENSES/LICENSE-CC-BY-4.0.txt"><img alt="CC BY 4.0" src="https://img.shields.io/badge/Docs-CC%20BY%204.0-ef7d00.svg"></a>
-    <img alt="Python" src="https://img.shields.io/badge/Python-3.12+-3776AB.svg">
-    <img alt="NumPy" src="https://img.shields.io/badge/NumPy-2.x-013243.svg">
-  </p>
-  <p>
-    <!-- Cambia el enlace al DOI cuando publiques en Zenodo -->
-    <a href="SigmaPredictor_TCDS_v1.1.0.zip"><img alt="Descargar ZIP" src="https://img.shields.io/badge/Descargar-ZIP%20v1.1.0-111111.svg?logo=download"></a>
+  <a href="SigmaPredictor_TCDS_v1.1.0.zip"><img alt="Descargar ZIP" src="https://img.shields.io/badge/Descargar-ZIP%20v1.1.0-111111.svg?logo=download"></a>
     <a href="https://doi.org/10.5281/zenodo.XXXXXXX"><img alt="DOI Zenodo" src="https://img.shields.io/badge/DOI-Zenodo-1182c3.svg?logo=zenodo"></a>
   </p>
 
