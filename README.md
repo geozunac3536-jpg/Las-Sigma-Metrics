@@ -1,4 +1,3 @@
-<!-- Dark header -->
 <div align="center" style="background:#0d0f14;padding:28px 16px;border-radius:16px;border:1px solid #1b1f2a">
   <h1 style="color:#e6edf3;margin:0;font-size:34px;line-height:1.2">Las Sigma Metrics — Software Metrológico Σ (TCDS)</h1>
   <p style="color:#9fb1c7;margin:8px 0 0">Pipeline mínimo, auditable y reproducible para LI, R, RMSE_SL y κΣ en series temporales.<br>Probado en Android/Termux y PC con Python+NumPy.</p>
